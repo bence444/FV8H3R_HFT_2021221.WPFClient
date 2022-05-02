@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FV8H3R_HFT_2021221.Logic
 {
-    public class UserLogic : ILogic, IUserLogic
+    public class UserLogic : IUserLogic
     {
         IMessenger messenger;
 
