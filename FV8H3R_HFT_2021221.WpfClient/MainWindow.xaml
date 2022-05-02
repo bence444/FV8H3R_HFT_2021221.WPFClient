@@ -23,7 +23,7 @@
             <Label Content="Name" Background="LightSeaGreen" Padding="5" HorizontalContentAlignment="Stretch" />
             <TextBox Text="{Binding SelectedUser.Name}" Padding="5" HorizontalContentAlignment="Stretch" />
             <Label Content="Bio" Background="LightSeaGreen" Padding="5" HorizontalContentAlignment="Stretch" />
-            <TextBlock Text="{Binding SelectedUser.Bio}" Padding="5" />
+            <TextBox Text="{Binding SelectedUser.Bio}" Padding="5" />
 
             <Button Content="create user" Command="{Binding AddUserCommand}" Padding="5" Margin="5 10 5 5"/>
             <Button Content="delete user" Command="{Binding RemoveUserCommand}" Padding="5" Margin="5" />
