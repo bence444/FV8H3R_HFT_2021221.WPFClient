@@ -17,13 +17,13 @@ namespace FV8H3R_HFT_2021221.Repository
 
         public void Create(Message entity)
         {
-            ctx.Set<Message>().Add(entity);
+            ctx.Messages.Add(entity);
             ctx.SaveChanges();
         }
 
         public void Delete(Message entity)
         {
-            ctx.Set<Message>().Remove(entity);
+            ctx.Messages.Remove(entity);
             ctx.SaveChanges();
         }
 

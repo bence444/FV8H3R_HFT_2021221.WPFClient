@@ -17,13 +17,13 @@ namespace FV8H3R_HFT_2021221.Repository
 
         public void Create(Match entity)
         {
-            ctx.Set<Match>().Add(entity);
+            ctx.Matches.Add(entity);
             ctx.SaveChanges();
         }
 
         public void Delete(Match entity)
         {
-            ctx.Set<Match>().Remove(entity);
+            ctx.Matches.Remove(entity);
             ctx.SaveChanges();
         }
 
@@ -35,7 +35,7 @@ namespace FV8H3R_HFT_2021221.Repository
 
         public IQueryable<Match> ReadAll()
         {
-            return ctx.Set<Match>();
+            return ctx.Matches.AsQueryable();
         }
 
         public Match ReadOne(int id)

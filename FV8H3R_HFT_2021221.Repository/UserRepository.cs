@@ -17,13 +17,13 @@ namespace FV8H3R_HFT_2021221.Repository
 
         public void Create(User entity)
         {
-            ctx.Set<User>().Add(entity);
+            ctx.Users.Add(entity);
             ctx.SaveChanges();
         }
 
         public void Delete(User entity)
         {
-            ctx.Set<User>().Remove(entity);
+            ctx.Users.Remove(entity);
             ctx.SaveChanges();
         }
 
@@ -35,7 +35,7 @@ namespace FV8H3R_HFT_2021221.Repository
 
         public IQueryable<User> ReadAll()
         {
-            return ctx.Set<User>();
+            return ctx.Users.AsQueryable();
         }
 
         public User ReadOne(int id)
