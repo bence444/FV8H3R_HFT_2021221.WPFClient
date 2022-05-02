@@ -24,7 +24,18 @@ namespace FV8H3R_HFT_2021221.WpfClient
             {
                 if (value != null)
                 {
-                    selectedMatch = value;
+                    selectedMatch = new Match()
+                    {
+                        Id = value.Id,
+                        User_1 = value.User_1,
+                        User_2 = value.User_2
+                    };
+
+                    OnPropertyChanged();
+
+                    ((RelayCommand)AddMatchCommand).NotifyCanExecuteChanged();
+                    ((RelayCommand)RemoveMatchCommand).NotifyCanExecuteChanged();
+                    ((RelayCommand)UpdateMatchCommand).NotifyCanExecuteChanged();
                 }    
             }
         }
