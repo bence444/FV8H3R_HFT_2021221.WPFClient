@@ -12,6 +12,40 @@
     </Window.DataContext>
     
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0">
+            <Label Content="Match Id" Background="LightSeaGreen" Padding="5" HorizontalContentAlignment="Stretch" />
+            <TextBox Text="{Binding SelectedMatch.Id}" Padding="5" HorizontalContentAlignment="Stretch" />
+            <Label Content="First user's Id" Background="LightSeaGreen" Padding="5" HorizontalContentAlignment="Stretch" />
+            <TextBox Text="{Binding SelectedMatch.User_1}" Padding="5" HorizontalContentAlignment="Stretch" />
+            <Label Content="Second user's Id" Background="LightSeaGreen" Padding="5" HorizontalContentAlignment="Stretch" />
+            <TextBlock Text="{Binding SelectedMatch.User_2}" Padding="5" />
+
+            <Button Content="create user" Command="{Binding AddMatchCommand}" Padding="5" Margin="5 10 5 5"/>
+            <Button Content="delete user" Command="{Binding RemoveMatchCommand}" Padding="5" Margin="5" />
+            <Button Content="update user" Command="{Binding UpdateMatchCommand}" Padding="5" Margin="5" />
+        </StackPanel>
+
+        <ListBox Grid.Column="1" ItemsSource="{Binding Matches}" SelectedItem="{Binding SelectedMatch}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Label Content="{Binding Id}" ContentStringFormat="Match Id: {0}" />
+                        <Label x:Name="MultiLabel">
+                            <AccessText>
+                                <MultiBinding StringFormat="{}User 1:{0} - User 2:{1}">
+                                    <Binding Path="{Binding User_1}" />
+                                    <Binding Path="{Binding User_2}" />
+                                </MultiBinding>
+                            </AccessText>
+                        </Label>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Window>

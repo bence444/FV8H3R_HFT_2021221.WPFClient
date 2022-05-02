@@ -24,5 +24,10 @@ namespace FV8H3R_HFT_2021221.WpfClient
         {
             InitializeComponent();
         }
+
+        private void MatchWindowButton(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
