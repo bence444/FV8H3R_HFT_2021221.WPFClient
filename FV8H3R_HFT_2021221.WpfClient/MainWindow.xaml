@@ -18,13 +18,15 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0">
-            <Label Content="ID" Background="LightSeaGreen" Padding="5" />
-            <TextBox Text="" Padding="5" />
-            <Label Content="Name" Background="LightSeaGreen" Padding="5" />
-            <TextBox Text="" Padding="5" />
+            <Label Content="ID" Background="LightSeaGreen" Padding="5" HorizontalContentAlignment="Stretch" />
+            <TextBox Text="{Binding SelectedUser.Id}" Padding="5" HorizontalContentAlignment="Stretch" />
+            <Label Content="Name" Background="LightSeaGreen" Padding="5" HorizontalContentAlignment="Stretch" />
+            <TextBox Text="{Binding SelectedUser.Name}" Padding="5" HorizontalContentAlignment="Stretch" />
+            <Label Content="Bio" Background="LightSeaGreen" Padding="5" HorizontalContentAlignment="Stretch" />
+            <TextBlock Text="{Binding SelectedUser.Bio}" Padding="5" />
         </StackPanel>
 
-        <ListBox Grid.Column="1" ItemSource="{Binding Users}" SelectedItem="">
+        <ListBox Grid.Column="1" ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Label Content="" Padding="5" />
