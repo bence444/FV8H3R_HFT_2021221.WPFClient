@@ -35,7 +35,9 @@ namespace FV8H3R_HFT_2021221.WpfClient
 
                     OnPropertyChanged();
 
-                    //command
+                    ((RelayCommand)AddUserCommand).NotifyCanExecuteChanged();
+                    ((RelayCommand)RemoveUserCommand).NotifyCanExecuteChanged();
+                    ((RelayCommand)UpdateUserCommand).NotifyCanExecuteChanged();
                 }
             }
         }
@@ -53,7 +55,7 @@ namespace FV8H3R_HFT_2021221.WpfClient
         {
             if (!IsInDesignMode)
             {
-                Users = new RestCollection<User>("http://localhost:48623", "user");
+                Users = new RestCollection<User>("http://localhost:48623/", "user");
 
                 AddUserCommand = new RelayCommand(
                     () => Users.Add(new User()
@@ -64,9 +66,8 @@ namespace FV8H3R_HFT_2021221.WpfClient
                             Matches = SelectedUser.Matches,
                             Name = SelectedUser.Name,
                             RegDate = SelectedUser.RegDate
-                        }
-                    ),
-                    () => SelectedUser != null);
+                        }),
+                    () => SelectedUser != null); ;
 
                 RemoveUserCommand = new RelayCommand(
                     () => Users.Delete(SelectedUser.Id),

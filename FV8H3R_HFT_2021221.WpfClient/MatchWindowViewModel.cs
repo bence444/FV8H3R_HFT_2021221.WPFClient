@@ -42,7 +42,7 @@ namespace FV8H3R_HFT_2021221.WpfClient
         {
             if (!IsInDesignMode)
             {
-                Matches = new RestCollection<Match>("http://localhost:48623", "match");
+                Matches = new RestCollection<Match>("http://localhost:48623/", "match");
 
                 AddMatchCommand = new RelayCommand(
                     () => Matches.Add(new Match()
@@ -50,8 +50,7 @@ namespace FV8H3R_HFT_2021221.WpfClient
                             Id = SelectedMatch.Id,
                             User_1 = SelectedMatch.User_1,
                             User_2 = SelectedMatch.User_2
-                        }
-                    ),
+                        }),
                     () => SelectedMatch != null);
 
                 RemoveMatchCommand = new RelayCommand(
