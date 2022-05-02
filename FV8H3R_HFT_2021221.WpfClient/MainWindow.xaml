@@ -1,0 +1,31 @@
+﻿<Window x:Class="FV8H3R_HFT_2021221.WpfClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FV8H3R_HFT_2021221.WpfClient"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0">
+            <Label Content="ID" Background="LightSeaGreen" Padding="5" />
+            <TextBox Text="" Padding="5" />
+            <Label Content="Name" Background="LightSeaGreen" Padding="5" />
+            <TextBox Text="" Padding="5" Padding="5" />
+        </StackPanel>
+
+        <ListBox Grid.Column="1" ItemSource="" SelectedItem="">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="" Padding="5" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>
