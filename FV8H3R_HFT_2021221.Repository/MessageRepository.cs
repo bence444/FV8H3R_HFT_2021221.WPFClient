@@ -43,9 +43,9 @@ namespace FV8H3R_HFT_2021221.Repository
             return ReadAll().FirstOrDefault(x => x.Id == id);
         }
 
-        public void Update(int id, Message updated)
+        public void Update(Message updated)
         {
-            var msgToUpdate = ReadOne(id);
+            var msgToUpdate = ReadOne(updated.Id);
 
             msgToUpdate.SenderId = updated.SenderId;
             msgToUpdate.MessageSent = updated.MessageSent;

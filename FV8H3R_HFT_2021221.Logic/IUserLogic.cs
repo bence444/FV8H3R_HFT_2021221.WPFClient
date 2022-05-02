@@ -11,7 +11,7 @@ namespace FV8H3R_HFT_2021221.Logic
     {
         User ReadOne(int id);
         IList<User> ReadAll();
-        void Update(int id, User updated);
+        void Update(User updated);
         void Create(User newMessage);
         void Delete(User forDelete);
         void Delete(int id);

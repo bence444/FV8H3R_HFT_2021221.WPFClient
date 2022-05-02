@@ -43,9 +43,9 @@ namespace FV8H3R_HFT_2021221.Logic
             return msgRepo.ReadOne(id);
         }
 
-        public void Update(int id, Message updated)
+        public void Update(Message updated)
         {
-            msgRepo.Update(id, updated);
+            msgRepo.Update(updated);
         }
 
         public double AverageLength()

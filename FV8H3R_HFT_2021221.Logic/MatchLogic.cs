@@ -42,9 +42,9 @@ namespace FV8H3R_HFT_2021221.Logic
             return matchRepo.ReadOne(id);
         }
 
-        public void Update(int id, Match updated)
+        public void Update(Match updated)
         {
-            matchRepo.Update(id, updated);
+            matchRepo.Update(updated);
         }
     }
 }

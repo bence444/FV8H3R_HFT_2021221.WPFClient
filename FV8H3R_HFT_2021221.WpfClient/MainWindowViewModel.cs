@@ -67,7 +67,7 @@ namespace FV8H3R_HFT_2021221.WpfClient
                             Name = SelectedUser.Name,
                             RegDate = SelectedUser.RegDate
                         }),
-                    () => SelectedUser != null); ;
+                    () => SelectedUser != null);
 
                 RemoveUserCommand = new RelayCommand(
                     () => Users.Delete(SelectedUser.Id),

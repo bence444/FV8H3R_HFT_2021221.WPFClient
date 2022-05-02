@@ -11,7 +11,7 @@ namespace FV8H3R_HFT_2021221.Logic
     {
         Match ReadOne(int id);
         IList<Match> ReadAll();
-        void Update(int id, Match updated);
+        void Update(Match updated);
         void Create(Match newMessage);
         void Delete(Match forDelete);
         void Delete(int id);

@@ -44,7 +44,7 @@ namespace FV8H3R_HFT_2021221.Endpoint.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] Match value)
         {
-            matchLog.Update(id, value);
+            matchLog.Update(value);
         }
 
         // DELETE api/<MatchController>/5

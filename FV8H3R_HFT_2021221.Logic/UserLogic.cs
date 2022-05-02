@@ -57,9 +57,9 @@ namespace FV8H3R_HFT_2021221.Logic
             return userRepo.ReadOne(id);
         }
 
-        public void Update(int id, User updated)
+        public void Update(User updated)
         {
-            userRepo.Update(id, updated);
+            userRepo.Update(updated);
         }
     }
 }

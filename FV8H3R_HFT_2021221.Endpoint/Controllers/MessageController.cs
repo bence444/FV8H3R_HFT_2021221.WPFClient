@@ -44,7 +44,7 @@ namespace FV8H3R_HFT_2021221.Endpoint.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] Message value)
         {
-            msgLog.Update(id, value);
+            msgLog.Update(value);
         }
 
         // DELETE api/<MessageController>/5

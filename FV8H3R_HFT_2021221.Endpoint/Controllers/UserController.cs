@@ -44,7 +44,7 @@ namespace FV8H3R_HFT_2021221.Endpoint.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] User value)
         {
-            userLog.Update(id, value);
+            userLog.Update(value);
         }
 
         // DELETE api/<UserController>/5

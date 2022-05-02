@@ -11,7 +11,7 @@ namespace FV8H3R_HFT_2021221.Logic
     {
         Message ReadOne(int id);
         IList<Message> ReadAll();
-        void Update(int id, Message updated);
+        void Update(Message updated);
         void Create(Message newMessage);
         void Delete(Message forDelete);
         void Delete(int id);
