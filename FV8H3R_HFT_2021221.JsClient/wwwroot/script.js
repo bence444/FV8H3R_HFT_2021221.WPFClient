@@ -1,55 +1,62 @@
-﻿let connection;
+﻿let log = console.log;
 
-let log = console.log;
-
+let connection;
 let Users = Array();
 
 $("document").ready(function () {
+    SetupSignalR();
+    GetData();
+
     function SetupSignalR() {
         connection = new signalR.HubConnectionBuilder()
             .withUrl("http://localhost:48623/hub")
-            .configureLogging()
+            .configureLogging(signalR.LogLevel.Information)
             .build();
 
         connection.on("User created", (user, msg) => GetData());
         connection.on("User deleted", (user, msg) => GetData());
 
-        connection.onclose(async () => await Start());
+        connection.onclose(async () => await start());
 
-        Start();
+        start();
     }
 
-    async function Start() {
+    async function start() {
         try {
-            await connection.Start();
+            await connection.start();
+            log("SignalR connected");
         }
         catch (error) {
             log(error);
-            setTimeout(start, 2500);
+            setTimeout(start, 5000);
         }
     }
 
     async function GetData() {
         log("GetData");
-        await fetch("http://localhost:48623/user/")
+        await fetch("http://localhost:48623/user")
             .then(x => x.json())
             .then(y => { Users = y; Display(); });
     }
 
     function Display() {
-        $("#results").html("");
+        $("#UserList").html("");
+
+        Users.forEach(x => {
+            $("#UserList").html('<div class="row">' + x.Id + '</div>');
+        });
     }
 
     function Post() {
         var name = $("#DogName").val();
 
-        await fetch(url, {
+        fetch(url, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ UserName: name }),
         })
             .then(response => response)
-            .then(data => { log("User added"); GetData(); })
+            .then(data => { log("User created"); GetData(); })
             .catch(error => log("Error: ", error));
     }
 
@@ -69,7 +76,7 @@ $("document").ready(function () {
         fetch("http://localhost:48623/user/" + Id, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({UserId: Id, UserName: name}),
+            body: JSON.stringify({ UserId: Id, UserName: name }),
         })
             .then(response => response)
             .then(data => { log("User updated"); GetData(); })

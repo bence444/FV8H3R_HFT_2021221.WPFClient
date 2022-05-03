@@ -21,7 +21,8 @@ namespace FV8H3R_HFT_2021221.Endpoint
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+            //services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+            services.AddControllers();
 
             services.AddTransient<UserLogic>();
             services.AddTransient<MatchLogic, MatchLogic>();
@@ -41,7 +42,7 @@ namespace FV8H3R_HFT_2021221.Endpoint
             services.AddTransient<TinderDbContext, TinderDbContext>();
 
             services.AddSignalR();
-            services.AddTransient<UserLogic>();
+            services.AddTransient<StatsLogic>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -52,8 +53,8 @@ namespace FV8H3R_HFT_2021221.Endpoint
             app.UseCors(x => x
             .AllowCredentials()
             .AllowAnyMethod()
-            .AllowCredentials()
-            .WithOrigins("http://localhost:48623"));
+            .AllowAnyHeader()
+            .WithOrigins("http://localhost:58000"));
 
             app.UseRouting();
             app.UseAuthorization();
