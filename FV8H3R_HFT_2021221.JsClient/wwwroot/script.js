@@ -3,7 +3,7 @@
 let connection;
 let Users = Array();
 
-$("document").ready(function () {
+$("document").ready(function() {
     SetupSignalR();
     GetData();
 });
@@ -16,8 +16,9 @@ function SetupSignalR() {
 
     connection.on("User added", (user, msg) => GetData());
     connection.on("User removed", (user, msg) => GetData());
+    connection.on("User updated", (user, msg) => GetData());
 
-    connection.onclose(async () => await start());
+    connection.onclose(async () => await Start());
 
     Start();
 }
@@ -48,9 +49,9 @@ function Display() {
     Users.forEach(x => {
         $("#UserList").append('<div class="row my-2 py-3 z-depth-3 bg-light rounded" id="User.' + x.id + '">\
                 <div class="col-md-1">#' + x.id + '</div>\
-                <div class="col-md-9"><input class="d-block w-100" id="User.Name.' + x.id + '" value="' + x.name + '"></div>\
+                <div class="col-md-9"><input class="d-block w-100" id="username_' + x.id + '" value="' + x.name + '"></div>\
                 <div class="col-md-2">\
-                    <button onclick="Update(' + x.id + ');" class="btn btn-sm btn-block btn-primary mb-0">update</button>\
+                    <button onclick="Put(' + x.id + ');" class="btn btn-sm btn-block btn-primary mb-0">update</button>\
                     <button onclick="Remove(' + x.id + ');" class="btn btn-sm btn-block btn-outline-warning">delete</button>\
                 </div>\
             </div >');
@@ -81,13 +82,13 @@ function Remove(Id) {
         .catch(error => log("Error: ", error));
 }
 
-function Update(Id) {
-    var name = $("User.Name." + Id).val();
+function Put(Id) {
+    var name = $("#username_" + Id).val();
 
     fetch("http://localhost:48623/user", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ UserId: Id, UserName: name }),
+        body: JSON.stringify({ id: Id, name: name }),
     })
         .then(response => response)
         .then(data => { log("User updated"); GetData(); })
