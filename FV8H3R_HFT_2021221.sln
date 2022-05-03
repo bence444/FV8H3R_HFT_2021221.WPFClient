@@ -33,7 +33,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Others", "Others", "{42E50B
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FV8H3R_HFT_2021221.WpfClient", "FV8H3R_HFT_2021221.WpfClient\FV8H3R_HFT_2021221.WpfClient.csproj", "{D6908116-3625-438F-B2C0-05665526224F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FV8H3R_HFT_2021221.WpfClient", "FV8H3R_HFT_2021221.WpfClient\FV8H3R_HFT_2021221.WpfClient.csproj", "{D6908116-3625-438F-B2C0-05665526224F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FV8H3R_HFT_2021221.JsClient", "FV8H3R_HFT_2021221.JsClient\FV8H3R_HFT_2021221.JsClient.csproj", "{417CD356-BF81-4180-B1C2-DD5C30C5DAE6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +75,10 @@ Global
 		{D6908116-3625-438F-B2C0-05665526224F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6908116-3625-438F-B2C0-05665526224F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6908116-3625-438F-B2C0-05665526224F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{417CD356-BF81-4180-B1C2-DD5C30C5DAE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{417CD356-BF81-4180-B1C2-DD5C30C5DAE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{417CD356-BF81-4180-B1C2-DD5C30C5DAE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{417CD356-BF81-4180-B1C2-DD5C30C5DAE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
