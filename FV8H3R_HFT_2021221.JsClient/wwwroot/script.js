@@ -1,5 +1,4 @@
 ﻿let connection;
-let url = "http://localhost:48623/user";
 
 let log = console.log;
 
@@ -32,7 +31,7 @@ $("document").ready(function () {
 
     async function GetData() {
         log("GetData");
-        await fetch(url)
+        await fetch("http://localhost:48623/user/")
             .then(x => x.json())
             .then(y => { Users = y; Display(); });
     }
@@ -67,7 +66,7 @@ $("document").ready(function () {
 
     function Update(Id) {
         var name = $(Id + ".Name").val()
-        fetch(url + Id, {
+        fetch("http://localhost:48623/user/" + Id, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({UserId: Id, UserName: name}),

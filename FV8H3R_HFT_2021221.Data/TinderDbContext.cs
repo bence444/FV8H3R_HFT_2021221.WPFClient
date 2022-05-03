@@ -19,7 +19,7 @@ namespace FV8H3R_HFT_2021221.Data
             this.Database.EnsureCreated();
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        /* protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
@@ -27,6 +27,12 @@ namespace FV8H3R_HFT_2021221.Data
                     .UseLazyLoadingProxies()
                     .UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True;MultipleActiveResultSets=True");
             }
+        } */
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+                optionsBuilder.UseLazyLoadingProxies().UseInMemoryDatabase("user");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

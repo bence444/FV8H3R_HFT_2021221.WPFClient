@@ -1,6 +1,8 @@
-﻿using FV8H3R_HFT_2021221.Logic;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using FV8H3R_HFT_2021221.Endpoint.Services;
+using FV8H3R_HFT_2021221.Logic;
 using FV8H3R_HFT_2021221.Models;
-using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +15,12 @@ namespace FV8H3R_HFT_2021221.Endpoint.Controllers
     public class UserController : ControllerBase
     {
         UserLogic userLog;
+        IHubContext<SignalRHub> hub;
 
-        public UserController(UserLogic userLogic)
+        public UserController(UserLogic userLogic, IHubContext<SignalRHub> hub)
         {
             this.userLog = userLogic;
+            this.hub = hub;
         }
 
         // GET: api/<UserController>
@@ -38,13 +42,15 @@ namespace FV8H3R_HFT_2021221.Endpoint.Controllers
         public void Post([FromBody] User value)
         {
             userLog.Create(value);
+            hub.Clients.All.SendAsync("User added", value);
         }
 
         // PUT api/<UserController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] User value)
+        [HttpPut]
+        public void Put([FromBody] User value)
         {
             userLog.Update(value);
+            hub.Clients.All.SendAsync("User updated", value);
         }
 
         // DELETE api/<UserController>/5
@@ -52,6 +58,7 @@ namespace FV8H3R_HFT_2021221.Endpoint.Controllers
         public void Delete(int id)
         {
             userLog.Delete(id);
+            hub.Clients.All.SendAsync("User removed", id);
         }
     }
 }

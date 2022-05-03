@@ -1,4 +1,5 @@
 using FV8H3R_HFT_2021221.Data;
+using FV8H3R_HFT_2021221.Endpoint.Services;
 using FV8H3R_HFT_2021221.Logic;
 using FV8H3R_HFT_2021221.Models;
 using FV8H3R_HFT_2021221.Repository;
@@ -38,6 +39,9 @@ namespace FV8H3R_HFT_2021221.Endpoint
 
             services.AddTransient<DbContext, TinderDbContext>();
             services.AddTransient<TinderDbContext, TinderDbContext>();
+
+            services.AddSignalR();
+            services.AddTransient<UserLogic>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -45,11 +49,19 @@ namespace FV8H3R_HFT_2021221.Endpoint
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
+            app.UseCors(x => x
+            .AllowCredentials()
+            .AllowAnyMethod()
+            .AllowCredentials()
+            .WithOrigins("http://localhost:48623"));
+
             app.UseRouting();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("/hub");
             });
         }
     }
