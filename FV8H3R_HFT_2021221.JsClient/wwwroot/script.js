@@ -1,5 +1,5 @@
 ﻿let connection;
-let url = "http://localhost:37822/user";
+let url = "http://localhost:48623/user";
 
 let log = console.log;
 
@@ -8,7 +8,7 @@ let Users = Array();
 $("document").ready(function () {
     function SetupSignalR() {
         connection = new signalR.HubConnectionBuilder()
-            .withUrl(url)
+            .withUrl("http://localhost:48623/hub")
             .configureLogging()
             .build();
 
