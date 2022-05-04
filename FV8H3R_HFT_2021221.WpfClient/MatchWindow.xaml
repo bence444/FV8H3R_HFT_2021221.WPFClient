@@ -25,9 +25,9 @@
             <Label Content="Second user's Id" Background="LightSeaGreen" Padding="5" HorizontalContentAlignment="Stretch" />
             <TextBox Text="{Binding SelectedMatch.User_2}" Padding="5" HorizontalContentAlignment="Stretch" />
 
-            <Button Content="create user" Command="{Binding AddMatchCommand}" Padding="5" Margin="5 10 5 5"/>
-            <Button Content="delete user" Command="{Binding RemoveMatchCommand}" Padding="5" Margin="5" />
-            <Button Content="update user" Command="{Binding UpdateMatchCommand}" Padding="5" Margin="5" />
+            <Button Content="create match" Command="{Binding AddMatchCommand}" Padding="5" Margin="5 10 5 5"/>
+            <Button Content="delete match" Command="{Binding RemoveMatchCommand}" Padding="5" Margin="5" />
+            <Button Content="update match" Command="{Binding UpdateMatchCommand}" Padding="5" Margin="5" />
         </StackPanel>
 
         <ListBox Grid.Column="1" ItemsSource="{Binding Matches}" SelectedItem="{Binding SelectedMatch}">

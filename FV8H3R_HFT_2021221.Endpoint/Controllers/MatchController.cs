@@ -41,8 +41,8 @@ namespace FV8H3R_HFT_2021221.Endpoint.Controllers
         }
 
         // PUT api/<MatchController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Match value)
+        [HttpPut]
+        public void Put([FromBody] Match value)
         {
             matchLog.Update(value);
         }

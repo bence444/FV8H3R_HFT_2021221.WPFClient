@@ -71,6 +71,8 @@ namespace FV8H3R_HFT_2021221.WpfClient
                 UpdateMatchCommand = new RelayCommand(
                     () => Matches.Update(SelectedMatch),
                     () => SelectedMatch != null);
+
+                SelectedMatch = new Match();
             }
         }
     }
